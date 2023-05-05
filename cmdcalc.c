@@ -2,6 +2,6 @@
 
 int main(){
 	char* str;
-	scnaf("%s \n", &str);
-	printf("%s \n",str);
+	scanf("%s", str);
+	printf("%s\n",str);
 }
