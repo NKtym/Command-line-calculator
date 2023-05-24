@@ -21,8 +21,10 @@ int check_for_expression_signs(char* str){
 		}
 		if(flag>0 && ((*(a-1)>=ZEROASCII && *(a-1)<=NINEASCII) || (*(a+1)>=ZEROASCII && *(a+1)<=NINEASCII)))
 			return 1; 
-		if(flag>1)
+		else if(flag>1)
 			return 1;
+		else
+			flag=0;
 	}
 	return 0;
 }

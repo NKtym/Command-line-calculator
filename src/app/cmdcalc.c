@@ -15,10 +15,10 @@ int main(int argc, char* argv[]){
 	char *s = malloc(MAXOP);
 	char* delim = malloc(1);
 	char *tmp = malloc(MAXOP);
-	//double result;
+	double result;
 	delim=" ";
 	strcpy(s,*argv);
-	printf("%s\n",s);
+	printf("%s = ",s);
 	tmp=strtok(s,delim);
 	while(tmp != NULL){
 		if(correctness_of_input_data(tmp)){
@@ -36,12 +36,14 @@ int main(int argc, char* argv[]){
 			free_cmdcalc(doub,ch,s);
 			return -1;
 		}
-		stack_filling(ch,doub,tmp);
+/*!*/		if(stack_filling(ch,doub,tmp)){
+			result=math(stack_double_pop(doub),stack_double_pop(doub),stack_char_pop(ch));
+			stack_double_push(doub,result);
+		}
 		tmp = strtok(NULL,delim);
 	}
-	printf("%c\n",stack_char_pop(ch));
-	printf("%lf\n",stack_double_pop(doub));
-	printf("%lf\n",stack_double_pop(doub));
+	result=process(ch, doub, result);
+	printf("%lf\n", result);
 	free_cmdcalc(doub,ch,s);
 	return 0;
 }
