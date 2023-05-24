@@ -23,7 +23,18 @@ int main(int argc, char* argv[]){
 	while(tmp != NULL){
 		if(correctness_of_input_data(tmp)){
 			printf("Не корректные входные данные\n");
-			break;
+			free_cmdcalc(doub,ch,s);
+			return -1;
+		}
+		if(check_for_expression_signs(tmp) || check_for_expression_signs2(tmp)){
+			printf("Не корректная постановка знаков действий\n");
+			free_cmdcalc(doub,ch,s);
+			return -1;
+		}
+		if(сheck_for_a_valid_entry(tmp)){
+			printf("Не корректная постановка пробелов в выражении\n");
+			free_cmdcalc(doub,ch,s);
+			return -1;
 		}
 		stack_filling(ch,doub,tmp);
 		tmp = strtok(NULL,delim);
@@ -31,5 +42,6 @@ int main(int argc, char* argv[]){
 	printf("%c\n",stack_char_pop(ch));
 	printf("%lf\n",stack_double_pop(doub));
 	printf("%lf\n",stack_double_pop(doub));
+	free_cmdcalc(doub,ch,s);
 	return 0;
 }
