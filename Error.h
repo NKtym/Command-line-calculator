@@ -1,3 +1,3 @@
 #pragma once
 
-int Correctness_of_input_data(char* str);
+int correctness_of_input_data(char* str);
