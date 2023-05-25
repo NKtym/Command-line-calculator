@@ -12,8 +12,6 @@ struct stack_char{
 
 struct stack_double *stack_double_create();
 struct stack_char *stack_char_create();
-void stack_double_free(struct stack_double *s);
-void stack_char_free(struct stack_char *s);
 int stack_double_push(struct stack_double *s, double value);
 int stack_char_push(struct stack_char *s, char value);
 double stack_double_pop(struct stack_double *s);

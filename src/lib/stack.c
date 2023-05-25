@@ -24,20 +24,6 @@ struct stack_char *stack_char_create()
 	return s;
 }
 
-void stack_double_free(struct stack_double *s)
-{
-	while (s->size > 0)
-		stack_double_pop(s);
-	free(s);
-}
-
-void stack_char_free(struct stack_char *s)
-{
-	while (s->size > 0)
-		stack_char_pop(s);
-	free(s);
-}
-
 int stack_double_push(struct stack_double *s, double value)
 {
 	s->top = list_double_addfront(s->top, value);

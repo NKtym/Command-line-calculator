@@ -5,7 +5,7 @@
 
 int correctness_of_input_data(char* str){
 	for (char *a = str; *a != '\0'; a++){	
-		if((*a>=ZEROASCII && *a<=NINEASCII) || *a=='+' || *a=='-' || *a=='*' || *a=='/' || *a=='(' || *a==')')
+		if((*a>=ZEROASCII && *a<=NINEASCII) || *a=='+' || *a=='-' || *a=='*' || *a=='/' || *a=='(' || *a==')' || *a==' ')
 			continue;	
 		else
 			return 1;
@@ -19,12 +19,12 @@ int check_for_expression_signs(char* str){
 		if(*a=='+' || *a=='-' || *a=='*' || *a=='/'){
 			flag++;
 		}
+		else
+			flag=0;
 		if(flag>0 && ((*(a-1)>=ZEROASCII && *(a-1)<=NINEASCII) || (*(a+1)>=ZEROASCII && *(a+1)<=NINEASCII)))
 			return 1; 
 		else if(flag>1)
 			return 1;
-		else
-			flag=0;
 	}
 	return 0;
 }
