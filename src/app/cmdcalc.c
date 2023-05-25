@@ -10,38 +10,36 @@
 
 int main(int argc, char* argv[]){
 	if(argc!=2){
-		printf("Неправильный ввод данных, для просмотра корректных входных данных введите команду 'h'\n");
+		printf("Неправильный ввод данных, для просмотра корректных входных данных введите команду 'help'\n");
 		return -1;
+	}
+	if(strcmp(argv[1],"help") == 0){
+		printf("Входные данные для корректной работы программы: ( A p B ), где A – левый операнд, B - правый операнд, p – арифметическая операция. A и B – представляют собой арифметические выражения или вещественные числа, p = + | - | * | /.\n"); 		
+		return 0;
 	}
 	argv++;
 	struct stack_double* doub=stack_double_create();
 	struct stack_char* ch=stack_char_create();
 	char *s = malloc(MAXOP);
-	char *delim = malloc(1);
+	char *delim = " ";
 	char *tmp = malloc(MAXOP);
 	double result;
-	delim=" ";
 	strcpy(s,*argv);
-	if(*s == 'h'){
-		printf("Входные данные для корректной работы программы: ( A p B ), где A – левый операнд, B - правый операнд, p – арифметическая операция. A и B – представляют собой арифметические выражения или вещественные числа, p = + | - | * | /.\n"); 
-		free_cmdcalc(doub,ch,s);		
-		return 0;
-	}
 	printf("%s = ",s);
 	tmp=strtok(s,delim);
 	while(tmp != NULL){
 		if(correctness_of_input_data(tmp)){
-			printf("Не корректные входные данные, для просмотра правильных входных данных введите команду 'h'\n");
+			printf("Не корректные входные данные, для просмотра правильных входных данных введите команду 'help'\n");
 			free_cmdcalc(doub,ch,s);
 			return -1;
 		}
 		if(check_for_expression_signs(tmp) || check_for_expression_signs2(tmp)){
-			printf("Не корректная постановка знаков действий, для просмотра правильных входных данных введите команду 'h'\n");
+			printf("Не корректная постановка знаков действий, для просмотра правильных входных данных введите команду 'help'\n");
 			free_cmdcalc(doub,ch,s);
 			return -1;
 		}
 		if(сheck_for_a_valid_entry(tmp)){
-			printf("Не корректная постановка пробелов в выражении, для просмотра правильных входных данных введите команду 'h'\n");
+			printf("Не корректная постановка пробелов в выражении, для просмотра правильных входных данных введите команду 'help'\n");
 			free_cmdcalc(doub,ch,s);
 			return -1;
 		}
